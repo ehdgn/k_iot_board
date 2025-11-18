@@ -1,16 +1,16 @@
 import type { ApiResponse } from "@/types/common/ApiResponse";
-import { API_ROUTES } from "../common/base.path";
 import { publicApi } from "../common/axiosInstance";
-import type { UserDetail, UserList } from "@/types/user/user.type";
+import type { UserDetailResponse, UserListResponse } from "@/types/user/user.dto";
+import { USER_PATH } from "./user.path";
 
 export const userApi = {
-  getUser: async (userId: number): Promise<UserDetail> => {
-    const res = await publicApi.get<ApiResponse<UserDetail>>(API_ROUTES.USERS.DETAIL(userId));
+  getUser: async (userId: number): Promise<UserDetailResponse> => {
+    const res = await publicApi.get<ApiResponse<UserDetailResponse>>(USER_PATH.BY_ID(userId));
     return res.data.data;
   },
 
-  getUserList: async (): Promise<UserList> => {
-    const res = await publicApi.get<ApiResponse<UserList>>(API_ROUTES.USERS.LIST);
+  getUserList: async (): Promise<UserListResponse> => {
+    const res = await publicApi.get<ApiResponse<UserListResponse>>(USER_PATH.LIST);
     return res.data.data;
   }
 }
