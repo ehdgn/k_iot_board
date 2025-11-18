@@ -33,9 +33,6 @@ public class RefreshToken extends BaseTimeEntity {
     )
     private User user;
 
-    @Column(name = "user_id", nullable = false, unique = true)
-    private Long userId;
-
     @Column(nullable = false, length = 350)
     private String token;
 
